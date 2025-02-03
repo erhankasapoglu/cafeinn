@@ -1,0 +1,79 @@
+{
+    "categories": [
+      {
+        "name": "Sıcak Kahveler",
+        "items": [
+          { "name": "Espresso", "price": 55, "image": "/images/espresso.png" },
+          { "name": "Americano", "price": 60, "image": "/images/americano.png" },
+          { "name": "Filtre Kahve", "price": 75, "image": "/images/filtre.png" },
+          { "name": "Sütlü Filtre Kahve", "price": 85, "image": "/images/sutlufilt.png" },
+          { "name": "Cappuccino", "price": 75, "image": "/images/capci.png" },
+          { "name": "Latte", "price": 80, "image": "/images/espresso.png" },
+          { "name": "Karamelli Latte", "price": 85, "image": "/images/espresso.png" },
+          { "name": "Fındıklı Latte", "price": 85, "image": "/images/espresso.png" },
+          { "name": "Nescafe", "price": 55, "image": "/images/espresso.png" },
+          { "name": "Sütlü Nescafe", "price": 65, "image": "/images/espresso.png" },
+          { "name": "Türk Kahvesi", "price": 60, "image": "/images/espresso.png" },
+          { "name": "Sütlü Türk Kahvesi", "price": 70, "image": "/images/espresso.png" },
+          { "name": "Sütlü Espresso", "price": 65, "image": "/images/su.png" }
+        ]
+      },
+      {
+        "name": "Fast Food",
+        "items": [
+            { "name": "Kaşarlı Tost", "price": 100, "image": "/images/cay.png" },
+            { "name": "Karışık Tost", "price": 110, "image": "/images/espresso.png" },
+            { "name": "Prensesa", "price": 110, "image": "/images/cay.png" }
+        ]
+      },
+      {
+        "name": "Soğuk Kahveler",
+        "items": [
+            { "name": "Ice Americano", "price": 65, "image": "/images/cay.png" },
+            { "name": "Ice Latte", "price": 85, "image": "/images/espresso.png" },
+            { "name": "Affogato", "price": 90, "image": "/images/cay.png" },
+            { "name": "Frappe", "price": 80, "image": "/images/espresso.png" },
+            { "name": "Fındıklı Iced Latte", "price": 90, "image": "/images/espresso.png" },
+            { "name": "Karamelli Iced Latte", "price": 90, "image": "/images/espresso.png" }
+        ]
+      },
+      {
+        "name": "Meşrubat Çeşitleri",
+        "items": [
+            { "name": "Coca Cola", "price": 65, "image": "/images/cay.png" },
+            { "name": "Fanta", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Sprite", "price": 65, "image": "/images/cay.png" },
+            { "name": "Burn", "price": 70, "image": "/images/espresso.png" },
+            { "name": "Churchill", "price": 50, "image": "/images/espresso.png" },
+            { "name": "Fuse Tea Karpuz", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Fuse Tea Limon", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Fuse Tea Mango", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Fuse Tea Şeftali", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Fuse Tea Kavun Çilek", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Cappy Atom", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Cappy Kayısı", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Cappy Portakal", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Cappy Şeftali", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Cappy Vişne", "price": 65, "image": "/images/espresso.png" },
+            { "name": "Schwepps Bitter Lemnon", "price": 70, "image": "/images/espresso.png" },
+            { "name": "Schwepps Mandarin", "price": 70, "image": "/images/espresso.png" },
+            { "name": "Schwepps Tonik", "price": 70, "image": "/images/espresso.png" },
+            { "name": "Frutti Çilek", "price": 30, "image": "/images/espresso.png" },
+            { "name": "Frutti Elma", "price": 30, "image": "/images/espresso.png" },
+            { "name": "Frutti Karpuz Çilek", "price": 30, "image": "/images/espresso.png" },
+            { "name": "Frutti Limon", "price": 30, "image": "/images/espresso.png" },
+            { "name": "Frutti Nar", "price": 30, "image": "/images/espresso.png" },
+            { "name": "Frutti Extra Armut", "price": 50, "image": "/images/espresso.png" },
+            { "name": "Frutti Extra Kavun", "price": 50, "image": "/images/espresso.png" },
+            { "name": "Frutti Extra Lime", "price": 50, "image": "/images/espresso.png" },
+            { "name": "Frutti Extra Mandalina", "price": 50, "image": "/images/espresso.png" },
+            { "name": "Frutti Extra Orman Meyveli", "price": 50, "image": "/images/espresso.png" },
+            { "name": "Sade Soda Beypazarı", "price": 25, "image": "/images/espresso.png" },
+            { "name": "Sade Soda Uludağ", "price": 25, "image": "/images/espresso.png" },
+            { "name": "Limonata", "price": 50, "image": "/images/espresso.png" },
+            { "name": "Su", "price": 15, "image": "/images/espresso.png" }
+        ]
+      }
+    ]
+  }
+  
