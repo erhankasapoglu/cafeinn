@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Cafe-Inn | Menü",
-  description: "Cafe-Inn'in güncel menüsü burada!"
+  description: "Cafe-Inn'in güncel menüsü burada!",
 };
 
 
