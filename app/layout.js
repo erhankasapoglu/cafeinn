@@ -12,9 +12,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Cafe-Inn Menu",
-  description: "Cafe-Inn Menu",
+  title: "Cafe-Inn | Menü",
+  description: "Cafe-Inn'in güncel menüsü burada!"
 };
+
 
 
 export default function RootLayout({ children }) {
