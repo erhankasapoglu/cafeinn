@@ -1,57 +1,51 @@
-"use client"; 
+"use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import menuData from "../data/menu.json";
 import Link from "next/link";
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
+  const [navbarHeight, setNavbarHeight] = useState(100);
 
-const handleCategoryClick = (categoryName) => {
-  setActiveCategory(categoryName);
-  const element = document.getElementById(categoryName);
-  if (element) {
-    smoothScrollTo(element, 600);
-  }
-};
+  useEffect(() => {
+    // Navbar yüksekliğini dinamik olarak al
+    const navbar = document.querySelector("nav");
+    if (navbar) {
+      setNavbarHeight(navbar.offsetHeight + 20); // Navbar + 20px boşluk
+    }
+  }, []);
 
-const smoothScrollTo = (element, duration) => {
-  const start = window.scrollY;
-  const navbarHeight = document.querySelector("nav").offsetHeight + 20; // Navbar yüksekliği + ekstra boşluk
-  const end = element.offsetTop - navbarHeight;
-  
-  const distance = end - start;
-  let startTime = null;
-
-  const easeInOutQuad = (time, start, distance, duration) => {
-    time /= duration / 2;
-    if (time < 1) return (distance / 2) * time * time + start;
-    time--;
-    return (-distance / 2) * (time * (time - 2) - 1) + start;
+  const handleCategoryClick = (categoryName) => {
+    setActiveCategory(categoryName);
+    const element = document.getElementById(categoryName);
+    if (element) {
+      setTimeout(() => {
+        smoothScrollTo(element, 600);
+      }, 100); // Küçük bir gecikme ekledik, daha doğru kaydırma için
+    }
   };
 
-  const animateScroll = (currentTime) => {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const run = easeInOutQuad(timeElapsed, start, distance, duration);
-    window.scrollTo(0, run);
-    if (timeElapsed < duration) requestAnimationFrame(animateScroll);
+  const smoothScrollTo = (element, duration) => {
+    const elementPosition =
+      element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+    window.scrollTo({
+      top: elementPosition,
+      behavior: "smooth",
+    });
   };
-
-  requestAnimationFrame(animateScroll);
-};
-
 
   return (
     <div>
       {/* Header */}
       <header className="bg-gray-900 text-white py-3 fixed top-0 left-0 right-0 z-20 flex justify-center items-center h-[80px]">
-        <Image 
-          src="/images/logo.png" 
-          alt="Cafe Logo" 
-          width={100} 
-          height={100} 
+        <Image
+          src="/images/logo.png"
+          alt="Cafe Logo"
+          width={100}
+          height={100}
           className="h-[60px] w-auto"
         />
       </header>
@@ -60,7 +54,7 @@ const smoothScrollTo = (element, duration) => {
       <nav className="bg-gray-800 text-white py-3 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
         <div className="max-w-full mx-auto flex flex-wrap justify-center gap-2 px-2">
           {menuData.categories.map((category) => (
-            <Link key={category.name} href={`#${category.name}`}>
+            <Link key={category.name} href={`#${category.name}`} scroll={false}>
               <span
                 onClick={(e) => {
                   e.preventDefault();
@@ -80,13 +74,20 @@ const smoothScrollTo = (element, duration) => {
       </nav>
 
       {/* Menü İçeriği */}
-      <main className="pt-[140px] p-4 max-w-full mx-auto">
+      <main className="pt-[180px] p-4 max-w-full mx-auto">
         {menuData.categories.map((category) => (
-          <div id={category.name} key={category.name} className="mb-11">
+          <div
+            id={category.name}
+            key={category.name}
+            className="mb-11 mt-6" // Başlıkların navbar altında kaybolmaması için
+          >
             <h2 className="text-lg sm:text-xl font-bold mb-4">{category.name}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {category.items.map((item) => (
-                <div key={item.name} className="flex items-center p-3 border rounded-lg shadow-md space-x-4 w-full bg-white">
+                <div
+                  key={item.name}
+                  className="flex items-center p-3 border rounded-lg shadow-md space-x-4 w-full bg-white"
+                >
                   {/* Resim */}
                   <div className="flex-shrink-0 w-24 h-24">
                     <Image
@@ -99,8 +100,12 @@ const smoothScrollTo = (element, duration) => {
                   </div>
                   {/* İçecek Adı ve Fiyat */}
                   <div className="flex flex-col justify-start">
-                    <p className="text-black text-base sm:text-lg font-semibold">{item.name}</p>
-                    <p className="text-gray-800 text-sm sm:text-base">{item.price} TL</p>
+                    <p className="text-black text-base sm:text-lg font-semibold">
+                      {item.name}
+                    </p>
+                    <p className="text-gray-800 text-sm sm:text-base">
+                      {item.price} TL
+                    </p>
                   </div>
                 </div>
               ))}
