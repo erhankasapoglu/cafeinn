@@ -8,18 +8,18 @@ import Link from "next/link";
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
 
-  const handleCategoryClick = (categoryName) => {
-    setActiveCategory(categoryName);
-    const element = document.getElementById(categoryName);
-    if (element) {
-      smoothScrollTo(element, 600);
-    }
-  };
+const handleCategoryClick = (categoryName) => {
+  setActiveCategory(categoryName);
+  const element = document.getElementById(categoryName);
+  if (element) {
+    smoothScrollTo(element, 600);
+  }
+};
 
- const smoothScrollTo = (element, duration) => {
+const smoothScrollTo = (element, duration) => {
   const start = window.scrollY;
-  const navbarHeight = 100; // Navbar + Ekstra boşluk
-  const end = element.offsetTop - navbarHeight; // Başlık tam görünür olacak şekilde kaydır
+  const navbarHeight = document.querySelector("nav").offsetHeight + 20; // Navbar yüksekliği + ekstra boşluk
+  const end = element.offsetTop - navbarHeight;
   
   const distance = end - start;
   let startTime = null;
