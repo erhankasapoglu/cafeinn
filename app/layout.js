@@ -16,6 +16,7 @@ export const metadata = {
   description: "Cafe-Inn Menu",
 };
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
