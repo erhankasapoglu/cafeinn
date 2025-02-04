@@ -53,7 +53,7 @@ export default function Menu() {
 
       {/* Navbar */}
       <nav className="bg-gray-800 text-white py-3 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
-        <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-center gap-4 px-2">
+        <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-center gap-4 px-4 text-center">
           {menuData.categories.map((category) => (
             <Link key={category.name} href={`#${category.name}`} scroll={false}>
               <span
