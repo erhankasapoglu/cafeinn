@@ -13,7 +13,7 @@ export default function Menu() {
     // Navbar yüksekliğini dinamik olarak al
     const navbar = document.querySelector("nav");
     if (navbar) {
-      setNavbarHeight(navbar.offsetHeight + 20); // Navbar + 20px boşluk
+      setNavbarHeight(navbar.offsetHeight); // Navbar yüksekliğini al
     }
   }, []);
 
@@ -22,14 +22,15 @@ export default function Menu() {
     const element = document.getElementById(categoryName);
     if (element) {
       setTimeout(() => {
-        smoothScrollTo(element, 600);
-      }, 100); // Küçük bir gecikme ekledik, daha doğru kaydırma için
+        smoothScrollTo(element);
+      }, 100); // Küçük bir gecikme vererek daha düzgün bir kaydırma sağlıyoruz
     }
   };
 
-  const smoothScrollTo = (element, duration) => {
-    const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+  const smoothScrollTo = (element) => {
+    const navbar = document.querySelector("nav");
+    const navbarHeight = navbar ? navbar.offsetHeight + 10 : 100; // Navbar yüksekliği + 10px boşluk
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
 
     window.scrollTo({
       top: elementPosition,
@@ -79,7 +80,7 @@ export default function Menu() {
           <div
             id={category.name}
             key={category.name}
-            className="mb-11 mt-6" // Başlıkların navbar altında kaybolmaması için
+            className="mb-11 mt-0" // Kategori başlıkları en üste hizalanacak
           >
             <h2 className="text-lg sm:text-xl font-bold mb-4">{category.name}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
