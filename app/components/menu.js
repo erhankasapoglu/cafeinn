@@ -113,38 +113,38 @@ export default function Menu() {
 
       {/* WhatsApp & Instagram Butonları */}
       <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-50">
-        {/* WhatsApp */}
-        <a
-          href="https://wa.me/YOUR_NUMBER"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
-        >
-          <Image
-            src="/images/whatsapp.png"
-            alt="WhatsApp"
-            width={40}
-            height={40}
-            className="w-10 h-10"
-          />
-        </a>
+  {/* WhatsApp */}
+  <a
+    href="https://wa.me/YOUR_NUMBER"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+  >
+    <Image
+      src="/images/whatsapp.png"
+      alt="WhatsApp"
+      width={180}
+      height={180}
+      className="w-10 h-10"
+    />
+  </a>
 
-        {/* Instagram */}
-        <a
-          href="https://www.instagram.com/YOUR_USERNAME"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 bg-pink-500 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
-        >
-          <Image
-            src="/images/instagram.png"
-            alt="Instagram"
-            width={40}
-            height={40}
-            className="w-10 h-10"
-          />
-        </a>
-      </div>
+  {/* Instagram */}
+  <a
+    href="https://www.instagram.com/YOUR_USERNAME"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+  >
+    <Image
+      src="/images/instagram.png"
+      alt="Instagram"
+      width={180}
+      height={180}
+      className="w-10 h-10"
+    />
+  </a>
+</div>
     </div>
   );
 }
