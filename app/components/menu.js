@@ -43,7 +43,7 @@ export default function Menu() {
 
   return (
     <div>
-      {/* Header: Logo, navbar ile çakışmaması için padding ve margin artırıldı */}
+      {/* Header */}
       <header className="bg-gray-900 text-white py-3 fixed top-0 left-0 right-0 z-20 flex justify-center items-center h-[80px]">
         <Image 
           src="/images/logo.png" 
@@ -54,24 +54,20 @@ export default function Menu() {
         />
       </header>
 
-      {/* Navbar - Header ile çakışmayı önlemek için top-[80px] verildi */}
+      {/* Navbar */}
       <nav className="bg-gray-800 text-white py-3 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
-        <div className="max-w-full mx-auto flex justify-center gap-4 px-2">
+        <div className="max-w-full mx-auto flex flex-wrap justify-center gap-2 px-2">
           {menuData.categories.map((category) => (
-            <Link
-              key={category.name}
-              href={`#${category.name}`}
-              className="relative"
-            >
+            <Link key={category.name} href={`#${category.name}`}>
               <span
                 onClick={(e) => {
                   e.preventDefault();
                   handleCategoryClick(category.name);
                 }}
-                className={`px-3 py-1 rounded-full ${
+                className={`flex justify-center items-center px-4 py-2 rounded-full transition-all duration-200 ${
                   activeCategory === category.name
-                    ? "border-2 border-white bg-yellow-500 text-black"
-                    : "hover:text-yellow-500"
+                    ? "border-2 border-white bg-yellow-500 text-black shadow-md"
+                    : "hover:bg-yellow-400 hover:text-black"
                 }`}
               >
                 {category.name}
@@ -81,7 +77,7 @@ export default function Menu() {
         </div>
       </nav>
 
-      {/* Menü İçeriği - Navbar ile çakışmayı önlemek için padding artırıldı */}
+      {/* Menü İçeriği */}
       <main className="pt-[140px] p-4 max-w-full mx-auto">
         {menuData.categories.map((category) => (
           <div id={category.name} key={category.name} className="mb-11">
@@ -89,7 +85,7 @@ export default function Menu() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {category.items.map((item) => (
                 <div key={item.name} className="flex items-center p-3 border rounded-lg shadow-md space-x-4 w-full bg-white">
-                  {/* Sol tarafa hizalanmış resim */}
+                  {/* Resim */}
                   <div className="flex-shrink-0 w-24 h-24">
                     <Image
                       src={item.image}
@@ -99,10 +95,10 @@ export default function Menu() {
                       className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
-                  {/* Sağdaki metin */}
+                  {/* İçecek Adı ve Fiyat */}
                   <div className="flex flex-col justify-start">
-                    <p className="text-base sm:text-lg font-semibold">{item.name}</p>
-                    <p className="text-gray-500 text-sm sm:text-base">{item.price} TRY</p>
+                    <p className="text-black text-base sm:text-lg font-semibold">{item.name}</p>
+                    <p className="text-gray-800 text-sm sm:text-base">{item.price} TRY</p>
                   </div>
                 </div>
               ))}
