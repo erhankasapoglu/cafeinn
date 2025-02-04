@@ -30,7 +30,7 @@ export default function Menu() {
   const smoothScrollTo = (element) => {
     const navbar = document.querySelector("nav");
     const navbarHeight = navbar ? navbar.offsetHeight + 10 : 100; // Navbar yüksekliği + 10px boşluk
-    const elementPosition = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY - navbarHeight - 80;
 
     window.scrollTo({
       top: elementPosition,
