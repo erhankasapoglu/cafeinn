@@ -53,7 +53,7 @@ export default function Menu() {
 
       {/* Navbar */}
       <nav className="bg-gray-800 text-white py-3 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
-        <div className="max-w-full mx-auto flex flex-wrap justify-center gap-2 px-2">
+        <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-center gap-4 px-2">
           {menuData.categories.map((category) => (
             <Link key={category.name} href={`#${category.name}`} scroll={false}>
               <span
@@ -82,7 +82,8 @@ export default function Menu() {
             key={category.name}
             className="mb-11 mt-0" // Kategori başlıkları en üste hizalanacak
           >
-            <h2 className="text-lg sm:text-xl font-bold mb-4 text-black dark:text-white">{category.name}</h2>
+            {/* 🔹 Kategori başlıkları artık her zaman siyah */}
+            <h2 className="text-lg sm:text-xl font-bold mb-4 text-black">{category.name}</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {category.items.map((item) => (
@@ -100,12 +101,12 @@ export default function Menu() {
                       className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
-                  {/* İçecek Adı ve Fiyat */}
+                  {/* 🔹 İçecek Adı ve Fiyat Artık Siyah */}
                   <div className="flex flex-col justify-start">
                     <p className="text-black text-base sm:text-lg font-semibold">
                       {item.name}
                     </p>
-                    <p className="text-gray-800 text-sm sm:text-base">
+                    <p className="text-black text-sm sm:text-base">
                       {item.price} TL
                     </p>
                   </div>
