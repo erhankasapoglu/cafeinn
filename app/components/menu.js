@@ -16,30 +16,32 @@ export default function Menu() {
     }
   };
 
-  const smoothScrollTo = (element, duration) => {
-    const start = window.scrollY;
-    const navbarHeight = 80;
-    const end = element.offsetTop - navbarHeight;
-    const distance = end - start;
-    let startTime = null;
+ const smoothScrollTo = (element, duration) => {
+  const start = window.scrollY;
+  const navbarHeight = 100; // Navbar + Ekstra boşluk
+  const end = element.offsetTop - navbarHeight; // Başlık tam görünür olacak şekilde kaydır
+  
+  const distance = end - start;
+  let startTime = null;
 
-    const easeInOutQuad = (time, start, distance, duration) => {
-      time /= duration / 2;
-      if (time < 1) return (distance / 2) * time * time + start;
-      time--;
-      return (-distance / 2) * (time * (time - 2) - 1) + start;
-    };
-
-    const animateScroll = (currentTime) => {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = easeInOutQuad(timeElapsed, start, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animateScroll);
-    };
-
-    requestAnimationFrame(animateScroll);
+  const easeInOutQuad = (time, start, distance, duration) => {
+    time /= duration / 2;
+    if (time < 1) return (distance / 2) * time * time + start;
+    time--;
+    return (-distance / 2) * (time * (time - 2) - 1) + start;
   };
+
+  const animateScroll = (currentTime) => {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const run = easeInOutQuad(timeElapsed, start, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animateScroll);
+  };
+
+  requestAnimationFrame(animateScroll);
+};
+
 
   return (
     <div>
@@ -98,7 +100,7 @@ export default function Menu() {
                   {/* İçecek Adı ve Fiyat */}
                   <div className="flex flex-col justify-start">
                     <p className="text-black text-base sm:text-lg font-semibold">{item.name}</p>
-                    <p className="text-gray-800 text-sm sm:text-base">{item.price} TRY</p>
+                    <p className="text-gray-800 text-sm sm:text-base">{item.price} TL</p>
                   </div>
                 </div>
               ))}
