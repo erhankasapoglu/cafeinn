@@ -1,4 +1,4 @@
-"use client"; // Bu satırı ekleyin, bileşenin istemci tarafında çalışacağını belirtmek için
+"use client"; 
 
 import { useState } from "react";
 import Image from "next/image";
@@ -8,30 +8,28 @@ import Link from "next/link";
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
 
-  // Kategorilere tıklandığında aktif kategoriyi belirle
   const handleCategoryClick = (categoryName) => {
     setActiveCategory(categoryName);
     const element = document.getElementById(categoryName);
     if (element) {
-      smoothScrollTo(element, 600); // Burada 600ms kaydırma süresi belirtiliyor
+      smoothScrollTo(element, 600);
     }
   };
 
-  // Kaydırma efektini uygulamak için custom scroll fonksiyonu
   const smoothScrollTo = (element, duration) => {
     const start = window.scrollY;
-    const navbarHeight = 170; // Navbar'ın yüksekliği (24 + 4px padding)
-    const end = element.offsetTop - navbarHeight; // Navbar'ı geçmek için 96px ekliyoruz
+    const navbarHeight = 80;
+    const end = element.offsetTop - navbarHeight;
     const distance = end - start;
     let startTime = null;
-  
+
     const easeInOutQuad = (time, start, distance, duration) => {
       time /= duration / 2;
       if (time < 1) return (distance / 2) * time * time + start;
       time--;
       return (-distance / 2) * (time * (time - 2) - 1) + start;
     };
-  
+
     const animateScroll = (currentTime) => {
       if (startTime === null) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
@@ -39,43 +37,41 @@ export default function Menu() {
       window.scrollTo(0, run);
       if (timeElapsed < duration) requestAnimationFrame(animateScroll);
     };
-  
+
     requestAnimationFrame(animateScroll);
   };
 
   return (
     <div>
-      {/* Header: Logo - fixed ve navbarla birlikte sabit */}
-      <header className="bg-gray-900 text-white py-0 fixed top-0 left-0 right-0 z-10">
-        <div className="max-w-2xl mx-auto text-center">
-          <Image 
-            src="/images/logo.png" 
-            alt="Cafe Logo" 
-            width={100} 
-            height={100} 
-            className="mx-auto" 
-          />
-        </div>
+      {/* Header: Logo, navbar ile çakışmaması için padding ve margin artırıldı */}
+      <header className="bg-gray-900 text-white py-3 fixed top-0 left-0 right-0 z-20 flex justify-center items-center h-[80px]">
+        <Image 
+          src="/images/logo.png" 
+          alt="Cafe Logo" 
+          width={100} 
+          height={100} 
+          className="h-[60px] w-auto"
+        />
       </header>
 
-      {/* Navbar */}
-      <div className="bg-gray-800 text-white py-4 fixed top-24 left-0 right-0 z-20 shadow-lg">
-        <div className="max-w-2xl mx-auto flex justify-center space-x-4">
+      {/* Navbar - Header ile çakışmayı önlemek için top-[80px] verildi */}
+      <nav className="bg-gray-800 text-white py-3 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
+        <div className="max-w-full mx-auto flex justify-center gap-4 px-2">
           {menuData.categories.map((category) => (
             <Link
               key={category.name}
               href={`#${category.name}`}
-              className={`hover:text-yellow-500 relative`}
+              className="relative"
             >
               <span
                 onClick={(e) => {
-                  e.preventDefault(); // Link'in default davranışını engelle
-                  handleCategoryClick(category.name); // Kategoriye kaydırma işlemini başlat
+                  e.preventDefault();
+                  handleCategoryClick(category.name);
                 }}
-                className={`${
+                className={`px-3 py-1 rounded-full ${
                   activeCategory === category.name
-                    ? "border-2 border-white rounded-full px-3 py-1"
-                    : ""
+                    ? "border-2 border-white bg-yellow-500 text-black"
+                    : "hover:text-yellow-500"
                 }`}
               >
                 {category.name}
@@ -83,41 +79,37 @@ export default function Menu() {
             </Link>
           ))}
         </div>
-      </div>
+      </nav>
 
-      {/* Menü İçeriği */}
-      <div className="pt-40 p-4 max-w-full mx-auto">
+      {/* Menü İçeriği - Navbar ile çakışmayı önlemek için padding artırıldı */}
+      <main className="pt-[140px] p-4 max-w-full mx-auto">
         {menuData.categories.map((category) => (
-          <div
-            id={category.name}
-            key={category.name}
-            className="mb-11 pt-0"
-          >
-            <h2 className="text-xl font-bold mb-4">{category.name}</h2>
-            <div className="grid grid-cols-2 gap-4">
+          <div id={category.name} key={category.name} className="mb-11">
+            <h2 className="text-lg sm:text-xl font-bold mb-4">{category.name}</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {category.items.map((item) => (
-                <div key={item.name} className="flex items-center justify-start p-2 border rounded-lg shadow space-x-4 w-full">
+                <div key={item.name} className="flex items-center p-3 border rounded-lg shadow-md space-x-4 w-full bg-white">
                   {/* Sol tarafa hizalanmış resim */}
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 w-24 h-24">
                     <Image
                       src={item.image}
                       alt={item.name}
-                      width={100}
-                      height={100}
-                      className="object-cover"
+                      width={96}
+                      height={96}
+                      className="object-cover w-full h-full rounded-lg"
                     />
                   </div>
                   {/* Sağdaki metin */}
                   <div className="flex flex-col justify-start">
-                    <p className="text-lg font-semibold">{item.name}</p>
-                    <p className="text-gray-500">{item.price} TRY</p>
+                    <p className="text-base sm:text-lg font-semibold">{item.name}</p>
+                    <p className="text-gray-500 text-sm sm:text-base">{item.price} TRY</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         ))}
-      </div>
+      </main>
     </div>
   );
 }
