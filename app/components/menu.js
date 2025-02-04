@@ -115,7 +115,7 @@ export default function Menu() {
       <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-50">
   {/* WhatsApp */}
   <a
-    href="https://wa.me/YOUR_NUMBER"
+    href="https://wa.me/+905318687716"
     target="_blank"
     rel="noopener noreferrer"
     className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
@@ -131,7 +131,7 @@ export default function Menu() {
 
   {/* Instagram */}
   <a
-    href="https://www.instagram.com/YOUR_USERNAME"
+    href="https://www.instagram.com/cafe_lnn"
     target="_blank"
     rel="noopener noreferrer"
     className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
