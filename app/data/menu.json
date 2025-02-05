@@ -31,8 +31,8 @@
       {
         "name": "Soğuk Kahveler",
         "items": [
-            { "name": "Ice Americano", "price": 65, "image": "/images/cay.png" },
-            { "name": "Ice Latte", "price": 85, "image": "/images/espresso.png" },
+            { "name": "Iced Americano", "price": 65, "image": "/images/cay.png" },
+            { "name": "Iced Latte", "price": 85, "image": "/images/espresso.png" },
             { "name": "Affogato", "price": 90, "image": "/images/cay.png" },
             { "name": "Frappe", "price": 80, "image": "/images/espresso.png" },
             { "name": "Fındıklı Iced Latte", "price": 90, "image": "/images/espresso.png" },
