@@ -61,7 +61,7 @@ export default function Menu() {
     }
   }, [activeCategory]);
 
-  // Kategoriye tıklamada sadece scroll işlemini tetikliyoruz (aktif kategori scroll event ile belirlenecek).
+  // Kategoriye tıklamada sadece scroll işlemini tetikliyoruz; aktif kategori scroll event'i tarafından belirlenecek.
   const handleCategoryClick = (categoryName) => {
     const element = document.getElementById(categoryName);
     if (element) {
@@ -86,6 +86,19 @@ export default function Menu() {
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Global style ile scrollbar'ı gizleme */}
+      <style jsx global>{`
+        /* Chrome, Safari, Opera için */
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        /* IE, Edge ve Firefox için */
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
       {/* Header */}
       <header className="bg-[#003362] text-white py-3 fixed top-0 left-0 right-0 z-20 flex justify-center items-center h-[80px]">
         <Image
@@ -98,8 +111,8 @@ export default function Menu() {
       </header>
 
       {/* Navbar */}
-      <nav className="bg-gray-800 text-white py-3 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
-        <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-start gap-4 px-4">
+      <nav className="bg-gray-800 text-white py-2 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
+        <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-start gap-2 px-4 scrollbar-hide">
           {menuData.categories.map((category) => (
             <Link key={category.name} href={`#${category.name}`} scroll={false}>
               <span
@@ -108,7 +121,7 @@ export default function Menu() {
                   e.preventDefault();
                   handleCategoryClick(category.name);
                 }}
-                className={`flex justify-center items-center px-4 py-2 rounded-full transition-all duration-200 focus:outline-none cursor-pointer ${
+                className={`flex justify-center items-center px-3 py-1 rounded-full transition-all duration-200 focus:outline-none cursor-pointer ${
                   activeCategory === category.name
                     ? "border-2 border-white bg-[#003362] text-white shadow-md"
                     : "hover:bg-gray-700 hover:text-white"
