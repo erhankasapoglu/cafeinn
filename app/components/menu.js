@@ -69,7 +69,7 @@ export default function Menu() {
     }
   }, [activeCategory]);
 
-  // Kategoriye tıklamada yalnızca scroll işlemini tetikliyoruz; aktif kategori scroll event'i tarafından belirlenecek.
+  // Kategoriye tıklamada sadece scroll işlemini tetikliyoruz; aktif kategori scroll event'i tarafından belirlenecek.
   const handleCategoryClick = (categoryName) => {
     const element = document.getElementById(categoryName);
     if (element) {
@@ -176,9 +176,8 @@ export default function Menu() {
         ))}
       </main>
 
-      {/* Sosyal İkonlar Sidebar */}
-      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-50 flex items-center">
-        {/* Sosyal İkonlar Container'ı */}
+      {/* Sosyal İkonlar Paneli */}
+      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
         <div
           className={`w-16 transition-transform duration-300 ${
             socialVisible ? "translate-x-0" : "translate-x-full"
@@ -215,36 +214,38 @@ export default function Menu() {
             </a>
           </div>
         </div>
-        {/* Toggle Butonu (Ok): Artık SAĞDA, ekranın en sağına yapışık */}
-        <button
-          onClick={() => setSocialVisible(!socialVisible)}
-          className="bg-transparent text-black p-2 focus:outline-none"
-        >
-          {socialVisible ? (
-            // İkonlar görünüyorsa: sol tarafa işaret eden ok (ikonları saklamak için)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 opacity-70"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          ) : (
-            // İkonlar gizliyse: sağa işaret eden ok (ikonları getirmek için)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6 opacity-70"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          )}
-        </button>
       </div>
+
+      {/* Toggle (Ok) Butonu */}
+      <button
+        onClick={() => setSocialVisible(!socialVisible)}
+        className="fixed top-1/2 z-50 bg-transparent text-black p-2 focus:outline-none transition-all duration-300"
+        style={{ right: socialVisible ? "64px" : "0px" }}
+      >
+        {socialVisible ? (
+          // İkonlar açıkken: ok ucu SAĞA (→)
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 opacity-70"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        ) : (
+          // İkonlar gizliyken: ok ucu SOLA (←)
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 opacity-70"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        )}
+      </button>
     </div>
   );
 }
