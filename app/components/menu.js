@@ -9,7 +9,7 @@ export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [navbarHeight, setNavbarHeight] = useState(100);
 
-  // Sayfa yüklendiğinde navbar yüksekliğini alıyoruz.
+  // Navbar yüksekliğini alıyoruz.
   useEffect(() => {
     const navbar = document.querySelector("nav");
     if (navbar) {
@@ -17,19 +17,15 @@ export default function Menu() {
     }
   }, []);
 
-  // Scroll yapıldığında aktif kategoriyi güncelleyen fonksiyon.
+  // Scroll event listener ile aktif kategori güncelleniyor.
   useEffect(() => {
     const handleScroll = () => {
-      // İçerik kısmının başlangıç noktası (header + navbar) pt-[180px] ile ayarlanmış.
-      const offset = 180;
-      let currentActive = menuData.categories[0].name; // Varsayılan olarak ilk kategori
-      
-      // Sayfadaki her kategori bölümünün konumunu kontrol ediyoruz.
+      const offset = 180; // İçeriğin başlangıç noktası (header+navbar boşluğu)
+      let currentActive = menuData.categories[0].name;
       menuData.categories.forEach((category) => {
         const element = document.getElementById(category.name);
         if (element) {
           const { top } = element.getBoundingClientRect();
-          // Eğer bölüm, offset değerinin üstündeyse aktif kategori olarak seçiyoruz.
           if (top <= offset) {
             currentActive = category.name;
           }
@@ -39,19 +35,15 @@ export default function Menu() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // İlk render’da aktif kategoriyi belirlemek için bir kez çağırıyoruz.
-    handleScroll();
+    handleScroll(); // İlk renderda aktif kategoriyi belirle
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Navbar’da tıklanan kategori için scroll animasyonu.
+  // Tıklamada yalnızca scroll işlemini tetikliyoruz, aktif kategori scroll event tarafından belirlenecek.
   const handleCategoryClick = (categoryName) => {
-    setActiveCategory(categoryName);
     const element = document.getElementById(categoryName);
     if (element) {
-      setTimeout(() => {
-        smoothScrollTo(element);
-      }, 100);
+      smoothScrollTo(element);
     }
   };
 
@@ -93,10 +85,10 @@ export default function Menu() {
                   e.preventDefault();
                   handleCategoryClick(category.name);
                 }}
-                className={`flex justify-center items-center px-4 py-2 rounded-full transition-all duration-200 ${
+                className={`flex justify-center items-center px-4 py-2 rounded-full transition-all duration-200 focus:outline-none cursor-pointer ${
                   activeCategory === category.name
-                    ? "border-2 border-white bg-yellow-500 text-black shadow-md"
-                    : "hover:bg-yellow-400 hover:text-black"
+                    ? "border-2 border-white bg-[#003362] text-white shadow-md"
+                    : "hover:bg-gray-700 hover:text-white"
                 }`}
               >
                 {category.name}
@@ -144,7 +136,6 @@ export default function Menu() {
 
       {/* WhatsApp & Instagram Butonları */}
       <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-50">
-        {/* WhatsApp */}
         <a
           href="https://wa.me/+905318687716"
           target="_blank"
@@ -160,7 +151,6 @@ export default function Menu() {
           />
         </a>
 
-        {/* Instagram */}
         <a
           href="https://www.instagram.com/cafe_lln"
           target="_blank"
