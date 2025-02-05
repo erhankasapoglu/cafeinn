@@ -138,14 +138,12 @@ export default function Menu() {
             <h2 className="text-lg sm:text-xl font-bold mb-4 text-black">
               {category.name}
             </h2>
-            {/* İki sütunlu grid yapısı */}
             <div className="grid grid-cols-2 gap-4">
               {category.items.map((item) => (
                 <div
                   key={item.name}
                   className="flex flex-col items-center p-3 border rounded-lg shadow-md bg-white"
                 >
-                  {/* Kare ve tam görüntü için container */}
                   <div className="relative w-full aspect-square mb-2">
                     <Image
                       src={item.image}
@@ -210,7 +208,6 @@ export default function Menu() {
         style={{ right: socialVisible ? "64px" : "0px" }}
       >
         {socialVisible ? (
-          // İkonlar açıkken: ok ucu SAĞA (→)
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 opacity-70"
@@ -221,7 +218,6 @@ export default function Menu() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         ) : (
-          // İkonlar gizliyken: ok ucu SOLA (←)
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 opacity-70"
