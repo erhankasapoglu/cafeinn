@@ -9,6 +9,7 @@ export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [navbarHeight, setNavbarHeight] = useState(100);
 
+  // Sayfa yüklendiğinde navbar yüksekliğini alıyoruz.
   useEffect(() => {
     const navbar = document.querySelector("nav");
     if (navbar) {
@@ -16,6 +17,34 @@ export default function Menu() {
     }
   }, []);
 
+  // Scroll yapıldığında aktif kategoriyi güncelleyen fonksiyon.
+  useEffect(() => {
+    const handleScroll = () => {
+      // İçerik kısmının başlangıç noktası (header + navbar) pt-[180px] ile ayarlanmış.
+      const offset = 180;
+      let currentActive = menuData.categories[0].name; // Varsayılan olarak ilk kategori
+      
+      // Sayfadaki her kategori bölümünün konumunu kontrol ediyoruz.
+      menuData.categories.forEach((category) => {
+        const element = document.getElementById(category.name);
+        if (element) {
+          const { top } = element.getBoundingClientRect();
+          // Eğer bölüm, offset değerinin üstündeyse aktif kategori olarak seçiyoruz.
+          if (top <= offset) {
+            currentActive = category.name;
+          }
+        }
+      });
+      setActiveCategory(currentActive);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // İlk render’da aktif kategoriyi belirlemek için bir kez çağırıyoruz.
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Navbar’da tıklanan kategori için scroll animasyonu.
   const handleCategoryClick = (categoryName) => {
     setActiveCategory(categoryName);
     const element = document.getElementById(categoryName);
@@ -28,9 +57,12 @@ export default function Menu() {
 
   const smoothScrollTo = (element) => {
     const navbar = document.querySelector("nav");
-    const navbarHeight = navbar ? navbar.offsetHeight + 10 : 100;
+    const computedNavbarHeight = navbar ? navbar.offsetHeight + 10 : 100;
     const elementPosition =
-      element.getBoundingClientRect().top + window.scrollY - navbarHeight - 80;
+      element.getBoundingClientRect().top +
+      window.scrollY -
+      computedNavbarHeight -
+      80;
 
     window.scrollTo({
       top: elementPosition,
@@ -39,7 +71,7 @@ export default function Menu() {
   };
 
   return (
-    <div className="bg- white min-h-screen">
+    <div className="bg-white min-h-screen">
       {/* Header */}
       <header className="bg-[#003362] text-white py-3 fixed top-0 left-0 right-0 z-20 flex justify-center items-center h-[80px]">
         <Image
@@ -53,7 +85,7 @@ export default function Menu() {
 
       {/* Navbar */}
       <nav className="bg-gray-800 text-white py-3 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
-        <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-start gap-4 px-4 pl-4">
+        <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-start gap-4 px-4">
           {menuData.categories.map((category) => (
             <Link key={category.name} href={`#${category.name}`} scroll={false}>
               <span
@@ -77,33 +109,32 @@ export default function Menu() {
       {/* Menü İçeriği */}
       <main className="pt-[180px] p-4 max-w-full mx-auto">
         {menuData.categories.map((category) => (
-          <div id={category.name} key={category.name} className="mb-11 mt-0">
+          <div id={category.name} key={category.name} className="mb-11">
             <h2 className="text-lg sm:text-xl font-bold mb-4 text-black">
               {category.name}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* İki sütunlu grid yapısı */}
+            <div className="grid grid-cols-2 gap-4">
               {category.items.map((item) => (
                 <div
                   key={item.name}
-                  className="flex items-center p-3 border rounded-lg shadow-md space-x-4 w-full bg-white"
+                  className="flex flex-col items-center p-3 border rounded-lg shadow-md bg-white"
                 >
-                  <div className="flex-shrink-0 w-24 h-24">
+                  {/* Kare ve tam görüntü için container */}
+                  <div className="relative w-full aspect-square mb-2">
                     <Image
                       src={item.image}
                       alt={item.name}
-                      width={96}
-                      height={96}
-                      className="object-cover w-full h-full rounded-lg"
+                      fill
+                      className="object-contain rounded-lg"
                     />
                   </div>
-                  <div className="flex flex-col justify-start">
-                    <p className="text-black text-base sm:text-lg font-semibold">
-                      {item.name}
-                    </p>
-                    <p className="text-black text-sm sm:text-base">
-                      {item.price} TL
-                    </p>
-                  </div>
+                  {/* İçecek Adı */}
+                  <p className="text-black text-base font-semibold text-center">
+                    {item.name}
+                  </p>
+                  {/* Fiyat */}
+                  <p className="text-black text-sm">{item.price} TL</p>
                 </div>
               ))}
             </div>
@@ -113,38 +144,38 @@ export default function Menu() {
 
       {/* WhatsApp & Instagram Butonları */}
       <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-50">
-  {/* WhatsApp */}
-  <a
-    href="https://wa.me/+905318687716"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
-  >
-    <Image
-      src="/images/whatsapp.png"
-      alt="WhatsApp"
-      width={180}
-      height={180}
-      className="w-10 h-10"
-    />
-  </a>
+        {/* WhatsApp */}
+        <a
+          href="https://wa.me/+905318687716"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+        >
+          <Image
+            src="/images/whatsapp.png"
+            alt="WhatsApp"
+            width={180}
+            height={180}
+            className="w-10 h-10"
+          />
+        </a>
 
-  {/* Instagram */}
-  <a
-    href="https://www.instagram.com/cafe_lnn"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
-  >
-    <Image
-      src="/images/instagram.png"
-      alt="Instagram"
-      width={180}
-      height={180}
-      className="w-10 h-10"
-    />
-  </a>
-</div>
+        {/* Instagram */}
+        <a
+          href="https://www.instagram.com/cafe_lln"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+        >
+          <Image
+            src="/images/instagram.png"
+            alt="Instagram"
+            width={180}
+            height={180}
+            className="w-10 h-10"
+          />
+        </a>
+      </div>
     </div>
   );
 }
