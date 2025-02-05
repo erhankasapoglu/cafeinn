@@ -69,6 +69,7 @@ export default function Menu() {
     }
   }, [activeCategory]);
 
+  // Kategoriye tıklamada sadece scroll işlemini tetikliyoruz; aktif kategori scroll event'i tarafından belirlenecek.
   const handleCategoryClick = (categoryName) => {
     const element = document.getElementById(categoryName);
     if (element) {
@@ -177,18 +178,48 @@ export default function Menu() {
 
       {/* Sosyal İkonlar Sidebar */}
       <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-50 flex items-center">
-        {/* İkonları içeren bölüm: transition ile slide animasyonu */}
+        {/* Toggle Butonu (Ok): Sol tarafta */}
+        <button
+          onClick={() => setSocialVisible(!socialVisible)}
+          className="bg-transparent text-white p-2 focus:outline-none"
+        >
+          {socialVisible ? (
+            // İkonlar görünüyorsa: sol tarafa işaret eden ok
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 opacity-70"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {/* Sola işaret eden ok */}
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          ) : (
+            // İkonlar gizliyse: sağa işaret eden ok
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 opacity-70"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          )}
+        </button>
+        {/* Sosyal İkonlar Container'ı */}
         <div
           className={`w-16 transition-transform duration-300 ${
             socialVisible ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col space-y-3 bg-gray-800 p-2 rounded-l-md">
+          <div className="flex flex-col space-y-3">
             <a
-              href="https://wa.me/YOUR_NUMBER"
+              href="https://wa.me/+905318687716"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+              className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center transition transform hover:scale-110"
             >
               <Image
                 src="/images/whatsapp.png"
@@ -199,10 +230,10 @@ export default function Menu() {
               />
             </a>
             <a
-              href="https://www.instagram.com/YOUR_USERNAME"
+              href="https://www.instagram.com/cafe_lnn"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+              className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center transition transform hover:scale-110"
             >
               <Image
                 src="/images/instagram.png"
@@ -214,35 +245,6 @@ export default function Menu() {
             </a>
           </div>
         </div>
-        {/* Toggle Butonu: İkonlar görünüyorsa ok sağa, gizliyorsa ok sola işaret etsin */}
-        <button
-          onClick={() => setSocialVisible(!socialVisible)}
-          className="bg-gray-800 text-white p-2 rounded-l-md shadow-lg"
-        >
-          {socialVisible ? (
-            // İkonlar görünüyorsa: ok sağa (simgeler saklansın)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          ) : (
-            // İkonlar gizliyse: ok sola (simgeler açılalım)
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          )}
-        </button>
       </div>
     </div>
   );
