@@ -199,7 +199,7 @@ export default function Menu() {
               />
             </a>
             <a
-              href="https://www.instagram.com/cafe_lln"
+              href="https://www.instagram.com/cafe_lnn"
               target="_blank"
               rel="noopener noreferrer"
               className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center transition transform hover:scale-110"
