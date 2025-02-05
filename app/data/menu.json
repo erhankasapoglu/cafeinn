@@ -23,9 +23,9 @@
       {
         "name": "Fast Food",
         "items": [
-            { "name": "Kaşarlı Tost", "price": 100, "image": "/images/cay.png" },
-            { "name": "Karışık Tost", "price": 110, "image": "/images/espresso.png" },
-            { "name": "Prensesa", "price": 110, "image": "/images/cay.png" }
+            { "name": "Kaşarlı Tost", "price": 100, "image": "/images/kasar.png" },
+            { "name": "Karışık Tost", "price": 110, "image": "/images/sucuk.png" },
+            { "name": "Prensesa", "price": 110, "image": "/images/prens.png" }
         ]
       },
       {
