@@ -8,6 +8,7 @@ import Link from "next/link";
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [navbarHeight, setNavbarHeight] = useState(0);
+  const [socialVisible, setSocialVisible] = useState(true);
 
   // Sayfa yüklendiğinde navbar yüksekliğini alıyoruz.
   useEffect(() => {
@@ -17,13 +18,20 @@ export default function Menu() {
     }
   }, []);
 
+  // Sayfa açıldıktan 3 saniye sonra sosyal ikonları gizle.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSocialVisible(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Scroll event ile aktif kategori hesaplaması
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector("header");
       const headerHeight = header ? header.offsetHeight : 80;
       const referencePoint = headerHeight + navbarHeight;
-
       let closestCategory = menuData.categories[0].name;
       let minDiff = Infinity;
 
@@ -61,7 +69,6 @@ export default function Menu() {
     }
   }, [activeCategory]);
 
-  // Kategoriye tıklamada sadece scroll işlemini tetikliyoruz; aktif kategori scroll event'i tarafından belirlenecek.
   const handleCategoryClick = (categoryName) => {
     const element = document.getElementById(categoryName);
     if (element) {
@@ -86,7 +93,7 @@ export default function Menu() {
 
   return (
     <div className="bg-white min-h-screen">
-      {/* Global style ile scrollbar'ı gizleme */}
+      {/* Global CSS: Horizontal scrollbar gizleme */}
       <style jsx global>{`
         /* Chrome, Safari, Opera için */
         .scrollbar-hide::-webkit-scrollbar {
@@ -157,11 +164,9 @@ export default function Menu() {
                       className="object-contain rounded-lg"
                     />
                   </div>
-                  {/* İçecek Adı */}
                   <p className="text-black text-base font-semibold text-center">
                     {item.name}
                   </p>
-                  {/* Fiyat */}
                   <p className="text-black text-sm">{item.price} TL</p>
                 </div>
               ))}
@@ -170,39 +175,74 @@ export default function Menu() {
         ))}
       </main>
 
-      {/* WhatsApp & Instagram Butonları */}
-      <div className="fixed right-4 top-1/2 transform -translate-y-1/2 flex flex-col space-y-3 z-50">
-        {/* WhatsApp */}
-        <a
-          href="https://wa.me/YOUR_NUMBER"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+      {/* Sosyal İkonlar Sidebar */}
+      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-50 flex items-center">
+        {/* İkonları içeren bölüm: transition ile slide animasyonu */}
+        <div
+          className={`w-16 transition-transform duration-300 ${
+            socialVisible ? "translate-x-0" : "translate-x-full"
+          }`}
         >
-          <Image
-            src="/images/whatsapp.png"
-            alt="WhatsApp"
-            width={180}
-            height={180}
-            className="w-10 h-10"
-          />
-        </a>
-
-        {/* Instagram */}
-        <a
-          href="https://www.instagram.com/YOUR_USERNAME"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+          <div className="flex flex-col space-y-3 bg-gray-800 p-2 rounded-l-md">
+            <a
+              href="https://wa.me/YOUR_NUMBER"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+            >
+              <Image
+                src="/images/whatsapp.png"
+                alt="WhatsApp"
+                width={180}
+                height={180}
+                className="w-10 h-10"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/YOUR_USERNAME"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
+            >
+              <Image
+                src="/images/instagram.png"
+                alt="Instagram"
+                width={180}
+                height={180}
+                className="w-10 h-10"
+              />
+            </a>
+          </div>
+        </div>
+        {/* Toggle Butonu: İkonlar görünüyorsa ok sağa, gizliyorsa ok sola işaret etsin */}
+        <button
+          onClick={() => setSocialVisible(!socialVisible)}
+          className="bg-gray-800 text-white p-2 rounded-l-md shadow-lg"
         >
-          <Image
-            src="/images/instagram.png"
-            alt="Instagram"
-            width={180}
-            height={180}
-            className="w-10 h-10"
-          />
-        </a>
+          {socialVisible ? (
+            // İkonlar görünüyorsa: ok sağa (simgeler saklansın)
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          ) : (
+            // İkonlar gizliyse: ok sola (simgeler açılalım)
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          )}
+        </button>
       </div>
     </div>
   );
