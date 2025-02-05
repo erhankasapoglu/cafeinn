@@ -185,7 +185,7 @@ export default function Menu() {
         >
           <div className="flex flex-col space-y-3">
             <a
-              href="https://wa.me/YOUR_NUMBER"
+              href="https://wa.me/+905318687716"
               target="_blank"
               rel="noopener noreferrer"
               className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center transition transform hover:scale-110"
@@ -199,7 +199,7 @@ export default function Menu() {
               />
             </a>
             <a
-              href="https://www.instagram.com/YOUR_USERNAME"
+              href="https://www.instagram.com/cafe_lln"
               target="_blank"
               rel="noopener noreferrer"
               className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center transition transform hover:scale-110"
