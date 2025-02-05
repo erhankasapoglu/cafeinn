@@ -45,7 +45,7 @@
           { "name": "Kış Çayı", "price": 90, "image": "/images/kiscayi.png" },
           { "name": "Kuşburnu Çayı", "price": 90, "image": "/images/kusburnu.png" },
           { "name": "Nane Limon Çayı", "price": 90, "image": "/images/nanelim.png" },
-          { "name": "Yeşil Çayı", "price": 90, "image": "/images/yesilcay.png" },
+          { "name": "Yeşil Çay", "price": 90, "image": "/images/yesilcay.png" },
           { "name": "Papatya Çayı", "price": 90, "image": "/images/papatya.png" }
       ]
 
