@@ -4,18 +4,20 @@
         "name": "Sıcak Kahveler",
         "items": [
           { "name": "Espresso", "price": 55, "image": "/images/espresso.png" },
+          { "name": "Sütlü Espresso", "price": 65, "image": "/images/espressosut.png" },
           { "name": "Americano", "price": 60, "image": "/images/americano.png" },
           { "name": "Filtre Kahve", "price": 75, "image": "/images/filtre.png" },
-          { "name": "Sütlü Filtre Kahve", "price": 85, "image": "/images/sutlufilt.png" },
-          { "name": "Cappuccino", "price": 75, "image": "/images/capci.png" },
-          { "name": "Latte", "price": 80, "image": "/images/espresso.png" },
-          { "name": "Karamelli Latte", "price": 85, "image": "/images/espresso.png" },
-          { "name": "Fındıklı Latte", "price": 85, "image": "/images/espresso.png" },
-          { "name": "Nescafe", "price": 55, "image": "/images/espresso.png" },
-          { "name": "Sütlü Nescafe", "price": 65, "image": "/images/espresso.png" },
-          { "name": "Türk Kahvesi", "price": 60, "image": "/images/espresso.png" },
-          { "name": "Sütlü Türk Kahvesi", "price": 70, "image": "/images/espresso.png" },
-          { "name": "Sütlü Espresso", "price": 65, "image": "/images/su.png" }
+          { "name": "Sütlü Filtre Kahve", "price": 85, "image": "/images/filtresut.png" },
+          { "name": "Cappuccino", "price": 75, "image": "/images/cap.png" },
+          { "name": "Latte", "price": 80, "image": "/images/latte.png" },
+          { "name": "Karamelli Latte", "price": 85, "image": "/images/caramellatte.png" },
+          { "name": "Fındıklı Latte", "price": 85, "image": "/images/findiklilatte.png" },
+          { "name": "Nescafe", "price": 55, "image": "/images/nescafe.png" },
+          { "name": "Sütlü Nescafe", "price": 65, "image": "/images/nescafesut.png" },
+          { "name": "Türk Kahvesi", "price": 60, "image": "/images/turk.png" },
+          { "name": "Sütlü Türk Kahvesi", "price": 70, "image": "/images/turksut.png" }
+
+          
         ]
       },
       {
