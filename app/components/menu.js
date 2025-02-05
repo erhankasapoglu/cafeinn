@@ -7,9 +7,9 @@ import Link from "next/link";
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
-  const [navbarHeight, setNavbarHeight] = useState(100);
+  const [navbarHeight, setNavbarHeight] = useState(0);
 
-  // Navbar yüksekliğini alıyoruz.
+  // Navbar yüksekliğini sayfa yüklendiğinde alıyoruz.
   useEffect(() => {
     const navbar = document.querySelector("nav");
     if (navbar) {
@@ -17,29 +17,39 @@ export default function Menu() {
     }
   }, []);
 
-  // Scroll event listener ile aktif kategori güncelleniyor.
+  // Scroll event ile aktif kategori hesaplamasını yapıyoruz.
   useEffect(() => {
     const handleScroll = () => {
-      const offset = 180; // İçeriğin başlangıç noktası (header+navbar boşluğu)
-      let currentActive = menuData.categories[0].name;
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.offsetHeight : 80;
+      // Referans noktamızı header ve navbar toplam yüksekliğine göre ayarlıyoruz.
+      const referencePoint = headerHeight + navbarHeight;
+
+      let closestCategory = menuData.categories[0].name;
+      let minDiff = Infinity;
+
       menuData.categories.forEach((category) => {
         const element = document.getElementById(category.name);
         if (element) {
-          const { top } = element.getBoundingClientRect();
-          if (top <= offset) {
-            currentActive = category.name;
+          // Her kategori bölümünün viewport üstünden referans noktasına olan uzaklığını hesaplıyoruz.
+          const diff = Math.abs(element.getBoundingClientRect().top - referencePoint);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestCategory = category.name;
           }
         }
       });
-      setActiveCategory(currentActive);
+
+      setActiveCategory(closestCategory);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // İlk renderda aktif kategoriyi belirle
+    // İlk render'da da aktif kategoriyi belirle
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navbarHeight]);
 
-  // Tıklamada yalnızca scroll işlemini tetikliyoruz, aktif kategori scroll event tarafından belirlenecek.
+  // Tıklamada yalnızca scroll animasyonunu tetikliyoruz; aktif kategori scroll event'i tarafından belirlenecek.
   const handleCategoryClick = (categoryName) => {
     const element = document.getElementById(categoryName);
     if (element) {
@@ -152,7 +162,7 @@ export default function Menu() {
         </a>
 
         <a
-          href="https://www.instagram.com/cafe_lln"
+          href="https://www.instagram.com/cafe_lnn"
           target="_blank"
           rel="noopener noreferrer"
           className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110"
