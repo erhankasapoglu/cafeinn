@@ -232,7 +232,7 @@ export default function Menu() {
               />
             </a>
             <a
-              href="https://www.google.com/search?sa=X&sca_esv=4271166684a7579e&rlz=1C1CHBD_enTR1143TR1143&tbm=lcl&q=Cafe+-+%C4%B0N+Yorumlar&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NzA0NTO1MDAzNjOzMDQxMjc23MDI-IpR2DkxLVVBV-HIBj-FyPyi0tycxKJFrNhEAYwTt9xGAAAA&rldimm=7015658063668142731&hl=tr-TR&ved=2ahUKEwiL5pSgq7KLAxUFVPEDHXQ-IQ4Q9fQKegQIPBAF&biw=1536&bih=703&dpr=1.25#lkt=LocalPoiReviews"
+              href="https://www.google.com/search?client=ms-android-samsung-gs-rev1&sca_esv=4271166684a7579e&q=Cafe+-+%C4%B0N+Yorumlar&ludocid=7015658063668142731&ibp=gwp;0,7&hl=tr-TR&sa=X&ved=2ahUKEwiMv-mtrLKLAxXASvEDHaeJCEkQ9fQKegQIYxAF&biw=412&bih=723&dpr=2.63#lkt=LocalPoiReviews&lpg=cid:CgIgAQ%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center transition transform hover:scale-110"
