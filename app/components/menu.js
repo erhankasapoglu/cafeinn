@@ -10,6 +10,7 @@ export default function Menu() {
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [socialVisible, setSocialVisible] = useState(true);
 
+  // Sayfa yüklendiğinde navbar yüksekliğini alıyoruz.
   useEffect(() => {
     const navbar = document.querySelector("nav");
     if (navbar) {
@@ -17,6 +18,7 @@ export default function Menu() {
     }
   }, []);
 
+  // Sayfa açıldıktan 3 saniye sonra sosyal ikonları gizle.
   useEffect(() => {
     const timer = setTimeout(() => {
       setSocialVisible(false);
@@ -24,35 +26,29 @@ export default function Menu() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Scroll event ile aktif kategori hesaplaması (hem aşağı hem de yukarı için)
   useEffect(() => {
+    const headerHeight = 80; // Header sabit yüksekliği (px)
     const handleScroll = () => {
-      const header = document.querySelector("header");
-      const headerHeight = header ? header.offsetHeight : 80;
-      const referencePoint = headerHeight + navbarHeight;
-      let closestCategory = menuData.categories[0].name;
-      let minDiff = Infinity;
-
+      const scrollY = window.scrollY;
+      // Referans noktamız: Şu anki scroll konumuna, header ve navbar yüksekliğini ekliyoruz.
+      const referencePoint = scrollY + headerHeight + navbarHeight;
+      let currentActive = menuData.categories[0].name;
       menuData.categories.forEach((category) => {
-        const element = document.getElementById(category.name);
-        if (element) {
-          const diff = Math.abs(
-            element.getBoundingClientRect().top - referencePoint
-          );
-          if (diff < minDiff) {
-            minDiff = diff;
-            closestCategory = category.name;
-          }
+        const heading = document.getElementById(category.name);
+        if (heading && heading.offsetTop <= referencePoint) {
+          currentActive = category.name;
         }
       });
-
-      setActiveCategory(closestCategory);
+      setActiveCategory(currentActive);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // İlk render'da aktif kategoriyi belirle
+    handleScroll(); // İlk render'da hesaplamak için
     return () => window.removeEventListener("scroll", handleScroll);
   }, [navbarHeight]);
 
+  // activeCategory değiştiğinde, ilgili navbar butonunu ortaya getirmek için scrollIntoView kullanıyoruz.
   useEffect(() => {
     if (activeCategory) {
       const activeNavElement = document.getElementById(`nav-${activeCategory}`);
@@ -65,6 +61,7 @@ export default function Menu() {
     }
   }, [activeCategory]);
 
+  // Navbar’daki kategori ismine tıklandığında ilgili kategori başlığına scroll yapıyoruz.
   const handleCategoryClick = (categoryName) => {
     const element = document.getElementById(categoryName);
     if (element) {
@@ -80,7 +77,6 @@ export default function Menu() {
       window.scrollY -
       computedNavbarHeight -
       80;
-
     window.scrollTo({
       top: elementPosition,
       behavior: "smooth",
@@ -89,16 +85,20 @@ export default function Menu() {
 
   return (
     <div className="bg-white min-h-screen">
+      {/* Global CSS: Horizontal scrollbar gizleme */}
       <style jsx global>{`
+        /* Chrome, Safari, Opera için */
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
+        /* IE, Edge ve Firefox için */
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
       `}</style>
 
+      {/* Header */}
       <header className="bg-[#003362] text-white py-3 fixed top-0 left-0 right-0 z-20 flex justify-center items-center h-[80px]">
         <Image
           src="/images/logo.png"
@@ -109,6 +109,7 @@ export default function Menu() {
         />
       </header>
 
+      {/* Navbar */}
       <nav className="bg-gray-800 text-white py-2 fixed top-[80px] left-0 right-0 z-10 shadow-lg">
         <div className="max-w-full mx-auto flex flex-nowrap overflow-x-auto whitespace-nowrap justify-start gap-2 px-4 scrollbar-hide">
           {menuData.categories.map((category) => (
@@ -132,18 +133,25 @@ export default function Menu() {
         </div>
       </nav>
 
+      {/* Menü İçeriği */}
       <main className="pt-[180px] p-4 max-w-full mx-auto">
         {menuData.categories.map((category) => (
-          <div id={category.name} key={category.name} className="mb-11">
-            <h2 className="text-lg sm:text-xl font-bold mb-4 text-black">
+          <div key={category.name} className="mb-11">
+            {/* Kategori başlığı; id'si kategori ismi (örn. "Sıcak Kahveler", "Fast Food" vb.) */}
+            <h2
+              id={category.name}
+              className="text-lg sm:text-xl font-bold mb-4 text-black"
+            >
               {category.name}
             </h2>
+            {/* İki sütunlu grid yapısı */}
             <div className="grid grid-cols-2 gap-4">
               {category.items.map((item) => (
                 <div
                   key={item.name}
                   className="flex flex-col items-center p-3 border rounded-lg shadow-md bg-white"
                 >
+                  {/* Kare ve tam görüntü için container */}
                   <div className="relative w-full aspect-square mb-2">
                     <Image
                       src={item.image}
@@ -163,6 +171,7 @@ export default function Menu() {
         ))}
       </main>
 
+      {/* Sosyal İkonlar Paneli */}
       <div className="fixed right-0 top-1/2 transform -translate-y-1/2 z-50">
         <div
           className={`w-16 transition-transform duration-300 ${
@@ -202,6 +211,7 @@ export default function Menu() {
         </div>
       </div>
 
+      {/* Toggle (Ok) Butonu */}
       <button
         onClick={() => setSocialVisible(!socialVisible)}
         className="fixed top-1/2 z-50 bg-transparent text-black p-2 focus:outline-none transition-all duration-300"
@@ -215,7 +225,12 @@ export default function Menu() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         ) : (
           <svg
@@ -225,7 +240,12 @@ export default function Menu() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         )}
       </button>
