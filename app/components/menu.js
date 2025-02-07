@@ -9,6 +9,17 @@ export default function Menu() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [socialVisible, setSocialVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Cihaz mobil mi kontrolü (örneğin, genişlik 768px ve altı ise)
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   // Sayfa yüklendiğinde navbar yüksekliğini alıyoruz.
   useEffect(() => {
@@ -26,18 +37,33 @@ export default function Menu() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Scroll event ile aktif kategori hesaplaması (hem aşağı hem de yukarı için)
+  // Scroll event ile aktif kategori hesaplaması
   useEffect(() => {
-    const headerHeight = 80; // Header sabit yüksekliği (px)
+    const headerHeight = 80; // header yüksekliği (sabit)
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      // Referans noktamız: Şu anki scroll konumuna, header ve navbar yüksekliğini ekliyoruz.
-      const referencePoint = scrollY + headerHeight + navbarHeight;
+      let referencePoint;
+
+      if (isMobile) {
+        // Mobilde referans nokta: viewport yüksekliğinin %30'u (örneğin)
+        referencePoint = window.innerHeight * 0.3;
+      } else {
+        // Masaüstünde: header ve navbar yüksekliğinin toplamı
+        referencePoint = headerHeight + navbarHeight;
+      }
+
+      // scrollY + referans noktasını hesaplamaya gerek kalmadan,
+      // getBoundingClientRect() ile her <h2> elementinin ekran üzerindeki konumunu kullanıyoruz.
       let currentActive = menuData.categories[0].name;
       menuData.categories.forEach((category) => {
         const heading = document.getElementById(category.name);
-        if (heading && heading.offsetTop <= referencePoint) {
-          currentActive = category.name;
+        if (heading) {
+          const rectTop = heading.getBoundingClientRect().top;
+          // Eğer başlık referans noktasının üstündeyse (yani ekranın yukarısında)
+          // o kategori aktif olarak atanır.
+          if (rectTop <= referencePoint) {
+            currentActive = category.name;
+          }
         }
       });
       setActiveCategory(currentActive);
@@ -46,7 +72,7 @@ export default function Menu() {
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // İlk render'da hesaplamak için
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [navbarHeight]);
+  }, [navbarHeight, isMobile]);
 
   // activeCategory değiştiğinde, ilgili navbar butonunu ortaya getirmek için scrollIntoView kullanıyoruz.
   useEffect(() => {
@@ -87,11 +113,9 @@ export default function Menu() {
     <div className="bg-white min-h-screen">
       {/* Global CSS: Horizontal scrollbar gizleme */}
       <style jsx global>{`
-        /* Chrome, Safari, Opera için */
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
-        /* IE, Edge ve Firefox için */
         .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
@@ -225,12 +249,7 @@ export default function Menu() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         ) : (
           <svg
@@ -240,12 +259,7 @@ export default function Menu() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         )}
       </button>
