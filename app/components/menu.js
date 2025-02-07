@@ -231,6 +231,20 @@ export default function Menu() {
                 className="w-10 h-10"
               />
             </a>
+            <a
+              href="https://www.google.com/search?sa=X&sca_esv=4271166684a7579e&rlz=1C1CHBD_enTR1143TR1143&tbm=lcl&q=Cafe+-+%C4%B0N+Yorumlar&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NzA0NTO1MDAzNjOzMDQxMjc23MDI-IpR2DkxLVVBV-HIBj-FyPyi0tycxKJFrNhEAYwTt9xGAAAA&rldimm=7015658063668142731&hl=tr-TR&ved=2ahUKEwiL5pSgq7KLAxUFVPEDHXQ-IQ4Q9fQKegQIPBAF&biw=1536&bih=703&dpr=1.25#lkt=LocalPoiReviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-14 h-14 bg-transparent rounded-full flex items-center justify-center transition transform hover:scale-110"
+            >
+              <Image
+                src="/images/maps.png"
+                alt="Instagram"
+                width={180}
+                height={180}
+                className="w-10 h-10"
+              />
+            </a>                  
           </div>
         </div>
       </div>
