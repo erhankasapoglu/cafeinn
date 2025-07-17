@@ -14,7 +14,7 @@
         { "name": "Fındıklı Latte", "price": 85, "image": "/images/findiklilatte.png" },
         { "name": "Nescafe", "price": 55, "image": "/images/nescafe.png" },
         { "name": "Sütlü Nescafe", "price": 65, "image": "/images/nescafesut.png" },
-        { "name": "Türk Kahvesi", "price": 60, "image": "/images/turk.png" },
+        { "name": "Türk Kahvesi", "price": 600, "image": "/images/turk.png" },
         { "name": "Sütlü Türk Kahvesi", "price": 70, "image": "/images/turksut.png" }
 
         
