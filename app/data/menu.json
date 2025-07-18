@@ -4,7 +4,7 @@
       "name": "Sıcak Kahveler",
       "items": [
         { "name": "Espresso", "price": 60, "image": "/images/espresso2.png" },
-        { "name": "Sütlü Espresso", "price": 70, "image": "/images/espressosut2.png" },
+        { "name": "Sütlü Espresso", "price": 75, "image": "/images/espressosut2.png" },
         { "name": "Americano", "price": 65, "image": "/images/americano.png" },
         { "name": "Filtre Kahve", "price": 85, "image": "/images/filtre2.png" },
         { "name": "Sütlü Filtre Kahve", "price": 95, "image": "/images/filtresut2.png" },
@@ -66,7 +66,7 @@
           { "name": "Fuse Tea Kavun Çilek", "price": 75, "image": "/images/ftkavuncilek.png" },
           { "name": "Cappy Atom", "price": 75, "image": "/images/capato.png" },
           { "name": "Cappy Kayısı", "price": 75, "image": "/images/capkay.png" },
-          { "name": "Cappy Portakal", "price": 65, "image": "/images/capport.png" },
+          { "name": "Cappy Portakal", "price": 75, "image": "/images/capport.png" },
           { "name": "Cappy Şeftali", "price": 75, "image": "/images/capsef.png" },
           { "name": "Cappy Vişne", "price": 75, "image": "/images/capvisne.png" },
           { "name": "Schwepps Bitter Lemnon", "price": 80, "image": "/images/schlim.png" },
@@ -85,7 +85,7 @@
           { "name": "Frutti Extra Orman Meyveli", "price": 60, "image": "/images/frutexorman.png" },
           { "name": "Sade Soda Beypazarı", "price": 30, "image": "/images/bey.png" },
           { "name": "Sade Soda Uludağ", "price": 30, "image": "/images/uludag.png" },
-          { "name": "Limonata", "price": 50, "image": "/images/limonata.png" },
+          { "name": "Limonata", "price": 60, "image": "/images/limonata.png" },
           { "name": "Su", "price": 15, "image": "/images/su.png" }
       ]
     },
