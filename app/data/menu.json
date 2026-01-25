@@ -4,18 +4,18 @@
       "name": "Sıcak Kahveler",
       "items": [
         { "name": "Espresso", "price": 80, "image": "/images/espresso2.png" },
-        { "name": "Sütlü Espresso", "price": 75, "image": "/images/espressosut2.png" },
-        { "name": "Americano", "price": 65, "image": "/images/americano.png" },
-        { "name": "Filtre Kahve", "price": 85, "image": "/images/filtre2.png" },
-        { "name": "Sütlü Filtre Kahve", "price": 95, "image": "/images/filtresut2.png" },
-        { "name": "Cappuccino", "price": 85, "image": "/images/cap.png" },
-        { "name": "Latte", "price": 90, "image": "/images/latte.png" },
-        { "name": "Karamelli Latte", "price": 100, "image": "/images/caramellatte.png" },
-        { "name": "Fındıklı Latte", "price": 100, "image": "/images/findiklilatte.png" },
-        { "name": "Nescafe", "price": 60, "image": "/images/nescafe.png" },
-        { "name": "Sütlü Nescafe", "price": 75, "image": "/images/nescafesut.png" },
-        { "name": "Türk Kahvesi", "price": 70, "image": "/images/turk.png" },
-        { "name": "Sütlü Türk Kahvesi", "price": 80, "image": "/images/turksut.png" }
+        { "name": "Sütlü Espresso", "price": 95, "image": "/images/espressosut2.png" },
+        { "name": "Americano", "price": 85, "image": "/images/americano.png" },
+        { "name": "Filtre Kahve", "price": 100, "image": "/images/filtre2.png" },
+        { "name": "Sütlü Filtre Kahve", "price": 110, "image": "/images/filtresut2.png" },
+        { "name": "Cappuccino", "price": 100, "image": "/images/cap.png" },
+        { "name": "Latte", "price": 110, "image": "/images/latte.png" },
+        { "name": "Karamelli Latte", "price": 110, "image": "/images/caramellatte.png" },
+        { "name": "Fındıklı Latte", "price": 110, "image": "/images/findiklilatte.png" },
+        { "name": "Nescafe", "price": 70, "image": "/images/nescafe.png" },
+        { "name": "Sütlü Nescafe", "price": 85, "image": "/images/nescafesut.png" },
+        { "name": "Türk Kahvesi", "price": 80, "image": "/images/turk.png" },
+        { "name": "Sütlü Türk Kahvesi", "price": 90, "image": "/images/turksut.png" }
 
         
       ]
@@ -24,29 +24,29 @@
     {
       "name": "Soğuk Kahveler",
       "items": [
-          { "name": "Iced Americano", "price": 75, "image": "/images/iceamericano.png" },
-          { "name": "Iced Latte", "price": 100, "image": "/images/icedlatte.png" },
-          { "name": "Affogato", "price": 100, "image": "/images/affogato.png" },
+          { "name": "Iced Americano", "price": 90, "image": "/images/iceamericano.png" },
+          { "name": "Iced Latte", "price": 120, "image": "/images/icedlatte.png" },
+          { "name": "Affogato", "price": 120, "image": "/images/affogato.png" },
           { "name": "Frappe", "price": 100, "image": "/images/frappe.png" },
-          { "name": "Fındıklı Iced Latte", "price": 110, "image": "/images/icedlattenut.png" },
-          { "name": "Karamelli Iced Latte", "price": 110, "image": "/images/icedcaramel.png" }
+          { "name": "Fındıklı Iced Latte", "price": 130, "image": "/images/icedlattenut.png" },
+          { "name": "Karamelli Iced Latte", "price": 130, "image": "/images/icedcaramel.png" }
       ]
     }, {
       "name": "Sıcak İçecekler",
       "items": [
-          { "name": "Sıcak Çikolata", "price": 85, "image": "/images/hotch.png" },
-          { "name": "Beyaz Sıcak Çikolata", "price": 85, "image": "/images/hotchw.png" },
-          { "name": "Sahlep", "price": 85, "image": "/images/sahlep.png" },
-          { "name": "Çay", "price": 20, "image": "/images/cay.png" },
-          { "name": "Fincan Çay", "price": 30, "image": "/images/fincancay.png" },
-          { "name": "Melisa Çayı", "price": 85, "image": "/images/melisacayi.png" },
-          { "name": "Ada Çayı", "price": 85, "image": "/images/adacayi.png" },
-          { "name": "Ihlamur", "price": 85, "image": "/images/ihlamur.png" },
-          { "name": "Kış Çayı", "price": 85, "image": "/images/kiscayi.png" },
-          { "name": "Kuşburnu Çayı", "price": 85, "image": "/images/kusburnu.png" },
-          { "name": "Nane Limon Çayı", "price": 85, "image": "/images/nanelim.png" },
-          { "name": "Yeşil Çay", "price": 85, "image": "/images/yesilcay.png" },
-          { "name": "Papatya Çayı", "price": 85, "image": "/images/papatya.png" }
+          { "name": "Sıcak Çikolata", "price": 100, "image": "/images/hotch.png" },
+          { "name": "Beyaz Sıcak Çikolata", "price": 100, "image": "/images/hotchw.png" },
+          { "name": "Sahlep", "price": 100, "image": "/images/sahlep.png" },
+          { "name": "Çay", "price": 25, "image": "/images/cay.png" },
+          { "name": "Fincan Çay", "price": 40, "image": "/images/fincancay.png" },
+          { "name": "Melisa Çayı", "price": 100, "image": "/images/melisacayi.png" },
+          { "name": "Ada Çayı", "price": 100, "image": "/images/adacayi.png" },
+          { "name": "Ihlamur", "price": 100, "image": "/images/ihlamur.png" },
+          { "name": "Kış Çayı", "price": 100, "image": "/images/kiscayi.png" },
+          { "name": "Kuşburnu Çayı", "price": 100, "image": "/images/kusburnu.png" },
+          { "name": "Nane Limon Çayı", "price": 100, "image": "/images/nanelim.png" },
+          { "name": "Yeşil Çay", "price": 100, "image": "/images/yesilcay.png" },
+          { "name": "Papatya Çayı", "price": 100, "image": "/images/papatya.png" }
       ]
 
     },
@@ -54,49 +54,48 @@
     {
       "name": "Meşrubat Çeşitleri",
       "items": [
-          { "name": "Coca Cola", "price": 75, "image": "/images/cocc.png" },
-          { "name": "Fanta", "price": 75, "image": "/images/fan.png" },
-          { "name": "Sprite", "price": 75, "image": "/images/sprite.png" },
-          { "name": "Burn", "price": 80, "image": "/images/burn.png" },
-          { "name": "Churchill", "price": 60, "image": "/images/chcil.png" },
-          { "name": "Fuse Tea Karpuz", "price": 75, "image": "/images/ftkarpuz.png" },
-          { "name": "Fuse Tea Limon", "price": 75, "image": "/images/ftlimon.png" },
-          { "name": "Fuse Tea Mango", "price": 75, "image": "/images/ftmangoan.png" },
-          { "name": "Fuse Tea Şeftali", "price": 75, "image": "/images/ftsef.png" },
-          { "name": "Fuse Tea Kavun Çilek", "price": 75, "image": "/images/ftkavuncilek.png" },
-          { "name": "Cappy Atom", "price": 75, "image": "/images/capato.png" },
-          { "name": "Cappy Kayısı", "price": 75, "image": "/images/capkay.png" },
-          { "name": "Cappy Portakal", "price": 75, "image": "/images/capport.png" },
-          { "name": "Cappy Şeftali", "price": 75, "image": "/images/capsef.png" },
-          { "name": "Cappy Vişne", "price": 75, "image": "/images/capvisne.png" },
-          { "name": "Schwepps Bitter Lemnon", "price": 80, "image": "/images/schlim.png" },
-          { "name": "Schwepps Mandarin", "price": 80, "image": "/images/schman.png" },
-          { "name": "Schwepps Tonik", "price": 80, "image": "/images/schton.png" },
-          { "name": "Freşa Extra Elma", "price": 35, "image": "/images/frexelma.png" },
-          { "name": "Frutti Çilek", "price": 35, "image": "/images/frutticilek.png" },
-          { "name": "Frutti Elma", "price": 35, "image": "/images/fruttielma.png" },
-          { "name": "Frutti Karpuz Çilek", "price": 35, "image": "/images/fruttikarpuzcilek.png" },
-          { "name": "Frutti Limon", "price": 35, "image": "/images/fruttilimon.png" },
-          { "name": "Frutti Nar", "price": 35, "image": "/images/fruttinar.png" },
-          { "name": "Frutti Extra Armut", "price": 60, "image": "/images/frutexarmut.png" },
-          { "name": "Frutti Extra Kavun", "price": 60, "image": "/images/frutexkavun.png" },
-          { "name": "Frutti Extra Lime", "price": 60, "image": "/images/frutexlime.png" },
-          { "name": "Frutti Extra Mandalina", "price": 60, "image": "/images/frutexmandalin.png" },
-          { "name": "Frutti Extra Orman Meyveli", "price": 60, "image": "/images/frutexorman.png" },
-          { "name": "Sade Soda Beypazarı", "price": 30, "image": "/images/bey.png" },
-          { "name": "Sade Soda Uludağ", "price": 30, "image": "/images/uludag.png" },
-          { "name": "Limonata", "price": 60, "image": "/images/limonata.png" },
-          { "name": "Su", "price": 15, "image": "/images/su.png" }
+          { "name": "Coca Cola", "price": 90, "image": "/images/cocc.png" },
+          { "name": "Fanta", "price": 90, "image": "/images/fan.png" },
+          { "name": "Sprite", "price": 90, "image": "/images/sprite.png" },
+          { "name": "Burn", "price": 100, "image": "/images/burn.png" },
+          { "name": "Churchill", "price": 70, "image": "/images/chcil.png" },
+          { "name": "Fuse Tea Karpuz", "price": 90, "image": "/images/ftkarpuz.png" },
+          { "name": "Fuse Tea Limon", "price": 90, "image": "/images/ftlimon.png" },
+          { "name": "Fuse Tea Mango", "price": 90, "image": "/images/ftmangoan.png" },
+          { "name": "Fuse Tea Şeftali", "price": 90, "image": "/images/ftsef.png" },
+          { "name": "Fuse Tea Kavun Çilek", "price": 90, "image": "/images/ftkavuncilek.png" },
+          { "name": "Cappy Atom", "price": 90, "image": "/images/capato.png" },
+          { "name": "Cappy Kayısı", "price": 90, "image": "/images/capkay.png" },
+          { "name": "Cappy Portakal", "price": 90, "image": "/images/capport.png" },
+          { "name": "Cappy Şeftali", "price": 90, "image": "/images/capsef.png" },
+          { "name": "Cappy Vişne", "price": 90, "image": "/images/capvisne.png" },
+          { "name": "Schwepps Bitter Lemnon", "price": 100, "image": "/images/schlim.png" },
+          { "name": "Schwepps Mandarin", "price": 100, "image": "/images/schman.png" },
+          { "name": "Schwepps Tonik", "price": 100, "image": "/images/schton.png" },
+          { "name": "Freşa Extra Elma", "price": 40, "image": "/images/frexelma.png" },
+          { "name": "Frutti Çilek", "price": 40, "image": "/images/frutticilek.png" },
+          { "name": "Frutti Elma", "price": 40, "image": "/images/fruttielma.png" },
+          { "name": "Frutti Karpuz Çilek", "price": 40, "image": "/images/fruttikarpuzcilek.png" },
+          { "name": "Frutti Limon", "price": 40, "image": "/images/fruttilimon.png" },
+          { "name": "Frutti Nar", "price": 40, "image": "/images/fruttinar.png" },
+          { "name": "Frutti Extra Armut", "price": 75, "image": "/images/frutexarmut.png" },
+          { "name": "Frutti Extra Kavun", "price": 75, "image": "/images/frutexkavun.png" },
+          { "name": "Frutti Extra Lime", "price": 75, "image": "/images/frutexlime.png" },
+          { "name": "Frutti Extra Mandalina", "price": 75, "image": "/images/frutexmandalin.png" },
+          { "name": "Frutti Extra Orman Meyveli", "price": 75, "image": "/images/frutexorman.png" },
+          { "name": "Sade Soda Beypazarı", "price": 35, "image": "/images/bey.png" },
+          { "name": "Sade Soda Uludağ", "price": 35, "image": "/images/uludag.png" },
+          { "name": "Limonata", "price": 75, "image": "/images/limonata.png" },
+          { "name": "Su", "price": 20, "image": "/images/su.png" }
       ]
     },
 
     {
       "name": "Fast Food",
       "items": [
-          { "name": "Kaşarlı Tost", "price": 110, "image": "/images/kasar.png" },
-          { "name": "Karışık Tost", "price": 120, "image": "/images/sucuk.png" },
-          { "name": "Prensesa", "price": 120, "image": "/images/prens.png" },
-          { "name": "Kruvasan", "price": 35, "image": "/images/7days.png" }
+          { "name": "Kaşarlı Tost", "price": 130, "image": "/images/kasar.png" },
+          { "name": "Karışık Tost", "price": 140, "image": "/images/sucuk.png" },
+          { "name": "Prensesa", "price": 150, "image": "/images/prens.png" }
       ]
     }
 
