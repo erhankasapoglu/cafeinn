@@ -3,7 +3,7 @@
     {
       "name": "Sıcak Kahveler",
       "items": [
-        { "name": "Espresso", "price": 60, "image": "/images/espresso2.png" },
+        { "name": "Espresso", "price": 80, "image": "/images/espresso2.png" },
         { "name": "Sütlü Espresso", "price": 75, "image": "/images/espressosut2.png" },
         { "name": "Americano", "price": 65, "image": "/images/americano.png" },
         { "name": "Filtre Kahve", "price": 85, "image": "/images/filtre2.png" },
