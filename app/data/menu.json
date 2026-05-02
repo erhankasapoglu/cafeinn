@@ -98,7 +98,7 @@
           { "name": "Prensesa", "price": 150, "image": "/images/prens.png" },
           { "name": "Medovinka", "price": 30, "image": "/images/medenka.png" },
           { "name": "Balkan Pasta", "price": 20, "image": "/images/balkan.png" },
-          { "name": "Borovets", "price": 30, "image": "/images/borovets.png" },
+          { "name": "Borovets", "price": 30, "image": "/images/borovets.png" }
       ]
     }
 
